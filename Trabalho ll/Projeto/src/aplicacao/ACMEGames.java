@@ -110,6 +110,7 @@ public class ACMEGames {
 
 
 	    public void mostrarEletronicos (){
+		entrada.nextLine();
 		  System.out.println("Digite a categoria dos jogos");
 		  String categoria = entrada.nextLine();
 
@@ -197,7 +198,7 @@ public class ACMEGames {
 
 
          public void maisAntigo(){
-	         Jogo antigo = null;
+		Jogo antigo = new JogoTabuleiro("neutro", 99999, 0.0, 0);
 
 			 for (Jogo jogo: ludoteca.getJogos()) {
 				 if (jogo.getAno() <= antigo.getAno()){
