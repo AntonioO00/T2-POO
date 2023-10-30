@@ -5,50 +5,60 @@ import dados.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintStream;
+import java.nio.charset.Charset;
+import java.util.Locale;
+import java.util.Scanner;
 
 
 public class ACMEGames {
+	private Scanner entrada = null;
+	private PrintStream saidaPadrao = System.out;
 	private Ludoteca ludoteca = new Ludoteca();
-	Scanner entrada = new Scanner(System.in);
+
 	public ACMEGames() {
-		executa();
+		try {
+			BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosin.txt"));
+			entrada = new Scanner(streamEntrada);
+			PrintStream streamSaida = new PrintStream(new File("dadosout.txt"), Charset.forName("UTF-8"));
+			System.setOut(streamSaida);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		Locale.setDefault(Locale.ENGLISH);
+		entrada.useLocale(Locale.ENGLISH);
 	}
 
 
 	public void executa(){
 		 cadastraEletronico();
-	     cadastrarTabuleiro();
-		 mostraDeterminado();
-		 mostrarAno();
-		 mostrarEletronicos();
-		 somatorioFinal();
-		 maiorTabuleiro();
-		 mostrarMedia();
-		 maisAntigo();
+
 	}
 
 		public void cadastraEletronico () {
-			System.out.println("Digite o nome do jogo");
-			String nome = entrada.nextLine();
-			System.out.println("Digite o ano do jogo");
-			int ano = entrada.nextInt();
-			System.out.println("Digite o preço base do jogo");
+		String ano ="";
+		String nome="";
+		nome= entrada.nextLine();
+		while (!nome.equals("-1")) {
+			int anoo = Integer.parseInt(ano);
 			double precobase = entrada.nextDouble();
-			entrada.nextLine();
-			System.out.println("Digite a plataforma do jogo");
 			String plataforma = entrada.nextLine();
-			System.out.println("Digite a categoria do jogo");
 			String categoria = entrada.nextLine();
-            Jogo existe = ludoteca.consultaPorNome(nome);
+
+
+			Jogo existe = ludoteca.consultaPorNome(nome);
 			if (existe == null) {
 				Categoria cat = ludoteca.value(categoria);
-				Jogo jogo = new JogoEletronico(nome, ano, precobase, plataforma, cat);
+				Jogo jogo = new JogoEletronico(nome, anoo, precobase, plataforma, cat);
 				ludoteca.addJogo(jogo);
 				System.out.println(jogo.getNome() + "," + jogo.calculaPrecoFinal());
+			} else {
+				System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
 			}
-			else {
-				System.out.println("ERRO-jogo com nome repitido :" +existe.getNome());
-			}
+		}
 
 		}
 
