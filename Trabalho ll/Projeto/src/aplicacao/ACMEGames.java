@@ -39,24 +39,27 @@ public class ACMEGames {
 	}
 
 		public void cadastraEletronico () {
-		String ano ="";
-		String nome="";
-		nome= entrada.nextLine();
-		while (!nome.equals("-1")) {
-			int anoo = Integer.parseInt(ano);
-			double precobase = entrada.nextDouble();
-			String plataforma = entrada.nextLine();
-			String categoria = entrada.nextLine();
+		String linha = entrada.nextLine();
+		while (!linha.equals("-1")) {
+			String[] info = linha.split(";");
+			if (info.length >= 4) {
+				String nome = info[0];
+				int ano = info[1];
+				double precobase = entrada.nex;
+				String plataforma = entrada.nextLine();
+				String categoria = entrada.nextLine();
 
 
-			Jogo existe = ludoteca.consultaPorNome(nome);
-			if (existe == null) {
-				Categoria cat = ludoteca.value(categoria);
-				Jogo jogo = new JogoEletronico(nome, anoo, precobase, plataforma, cat);
-				ludoteca.addJogo(jogo);
-				System.out.println(jogo.getNome() + "," + jogo.calculaPrecoFinal());
-			} else {
-				System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
+				Jogo existe = ludoteca.consultaPorNome(nome);
+				if (existe == null) {
+					Categoria cat = ludoteca.value(categoria);
+					Jogo jogo = new JogoEletronico(nome, ano, precobase, plataforma, cat);
+					ludoteca.addJogo(jogo);
+					System.out.println(jogo.getNome() + "," + jogo.calculaPrecoFinal());
+				} else {
+					System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
+
+		linha = entrada.nextLine();		}
 			}
 		}
 
