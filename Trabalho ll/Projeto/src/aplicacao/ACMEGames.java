@@ -34,7 +34,15 @@ public class ACMEGames {
 
 
 	public void executa(){
-		 cadastraEletronico();
+		cadastraEletronico();
+		cadastrarTabuleiro();
+		mostraDeterminado();
+		mostrarAno();
+		mostrarEletronicos();
+		somatorioFinal();
+		maiorTabuleiro();
+		mostrarMedia();
+		maisAntigo();
 
 	}
 
@@ -45,10 +53,10 @@ public class ACMEGames {
 		while (!linha.equals("-1")) {
 			String[] info = linha.split(";");
 			if (info.length >= 4) {
-				 String nome = info[0];
-				 ano = Integer.parseInt(info[1]);
-				 precobase = Double.parseDouble(info[2]);
-				String plataforma = info [3];
+				String nome = info[0];
+				ano = Integer.parseInt(info[1]);
+				precobase = Double.parseDouble(info[2]);
+				String plataforma = info[3];
 				String categoria = info[4];
 
 				Jogo existe = ludoteca.consultaPorNome(nome);
@@ -62,38 +70,45 @@ public class ACMEGames {
 
 				}
 			}
-			linha = entrada.nextLine();
+			linha =entrada.nextLine();
 		}
 
-		}
+	}
 
 
 		public void cadastrarTabuleiro () {
-			System.out.println("Digite o nome do jogo");
-			String nome = entrada.nextLine();
-			System.out.println("Digite o ano do jogo");
-			int ano = entrada.nextInt();
-			System.out.println("Digite o preço base do jogo");
-			double precobase = entrada.nextDouble();
-			System.out.println("Digite o numero de peças do jogo");
-			int numeropecas = entrada.nextInt();
-			entrada.nextLine();
-			Jogo existe = ludoteca.consultaPorNome(nome);
+             String linha = entrada.nextLine();
+			 int ano = 0;
+			 double precobase= 0;
+			 int numeropecas=0;
 
-			 if (existe == null) {
-				JogoTabuleiro jt = new JogoTabuleiro(nome, ano, precobase, numeropecas);
-				ludoteca.addJogo(jt);
-				System.out.println(jt.getNome() + "," + jt.calculaPrecoFinal());
-			}
-			 else {
-				System.out.println(":Erro-jogo com nome repetido: " + existe.getNome());
+			while (!linha.equals("-1")) {
+				String[] info = linha.split(";");
+				if (info.length >= 3) {
+
+					String nome = info[0];
+					ano = Integer.parseInt(info[1]);
+					precobase = Double.parseDouble(info[2]);
+					numeropecas = Integer.parseInt(info[3]);
+					Jogo existe = ludoteca.consultaPorNome(nome);
+
+					if (existe == null) {
+						JogoTabuleiro jt = new JogoTabuleiro(nome, ano, precobase, numeropecas);
+						ludoteca.addJogo(jt);
+						System.out.println(jt.getNome() + "," + jt.calculaPrecoFinal());
+					} else {
+						System.out.println(":Erro-jogo com nome repetido: " + existe.getNome());
+					}
+				}
+
+                   linha = entrada.nextLine();
 			}
 
 		}
 
 		public void mostraDeterminado () {
-			System.out.println("Digite o nome do jogo que deseja pesquisar");
 			String nome = entrada.nextLine();
+			System.out.println(nome);
 			if (ludoteca.consultaPorNome(nome) == null) {
 				System.out.println("ERRO - Jogo nao existe");
 			} else {
@@ -108,8 +123,8 @@ public class ACMEGames {
 
 
 	public void mostrarAno () {
-		System.out.println("Digite o ano dos jogos");
-		int ano = entrada.nextInt();
+		String converte = entrada.nextLine();
+		int ano = Integer.parseInt(converte);
 		ArrayList<Jogo>data = ludoteca.consultaPorAno(ano);
 		if (data == null){
 		System.out.println("Nenhum jogo encontrado");
@@ -117,7 +132,6 @@ public class ACMEGames {
 		else {
 			for (Jogo jogo: data) {
 				System.out.println(jogo.toString());
-				System.out.println("___________________");
 			}
 		}
 	}
@@ -125,12 +139,8 @@ public class ACMEGames {
 
 
 	    public void mostrarEletronicos (){
-		entrada.nextLine();
-		  System.out.println("Digite a categoria dos jogos");
 		  String categoria = entrada.nextLine();
-
 		  ArrayList<Jogo> array = ludoteca.getJogos();
-
 		   List<JogoEletronico> jogoseletronicos = array
 				.stream()
 				.filter(jogo -> jogo instanceof JogoEletronico)
@@ -142,7 +152,6 @@ public class ACMEGames {
 			for (JogoEletronico jogo : jogoseletronicos) {
 				if (jogo.getCategoria().equals(cate)) {
 					System.out.println(jogo.toString());
-					System.out.println("________________________");
 				}
 			}
 		}

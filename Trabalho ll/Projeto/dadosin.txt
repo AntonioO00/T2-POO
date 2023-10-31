@@ -4,7 +4,7 @@ The Sims 4;2014;55.03;PC;Simulacao
 Super Mario Odissey;2017;289.89;Switch;Acao
 -1
 Jogo da Vida;1970;121.34;70
-Xadrez;-204;15700.56;32
+Xadrez;204;15700.56;32
 -1
 Jogo da Vida
 2014
