@@ -1,5 +1,6 @@
 package aplicacao;
 
+
 import dados.*;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class ACMEGames {
 					Categoria cat = ludoteca.value(categoria);
 					Jogo jogo = new JogoEletronico(nome, ano, precobase, plataforma, cat);
 					ludoteca.addJogo(jogo);
-					System.out.println(jogo.getNome() + "," + jogo.calculaPrecoFinal());
+					System.out.println("1: "+jogo.getNome() + "," + jogo.calculaPrecoFinal());
 				} else {
 					System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
 
@@ -95,7 +96,7 @@ public class ACMEGames {
 					if (existe == null) {
 						JogoTabuleiro jt = new JogoTabuleiro(nome, ano, precobase, numeropecas);
 						ludoteca.addJogo(jt);
-						System.out.println(jt.getNome() + "," + jt.calculaPrecoFinal());
+						System.out.println("2:"+jt.getNome() + "," + jt.calculaPrecoFinal());
 					} else {
 						System.out.println(":Erro-jogo com nome repetido: " + existe.getNome());
 					}
@@ -108,14 +109,13 @@ public class ACMEGames {
 
 		public void mostraDeterminado () {
 			String nome = entrada.nextLine();
-			System.out.println(nome);
 			if (ludoteca.consultaPorNome(nome) == null) {
 				System.out.println("ERRO - Jogo nao existe");
 			} else {
 				ArrayList<Jogo> jogos = ludoteca.getJogos();
 				for (Jogo jogo : jogos) {
 					if (jogo.getNome().equals(nome)) {
-						System.out.println(jogo.toString());
+						System.out.println("3:"+jogo.toString());
 					}
 				}
 			}
@@ -131,7 +131,7 @@ public class ACMEGames {
 		}
 		else {
 			for (Jogo jogo: data) {
-				System.out.println(jogo.toString());
+				System.out.println("4:"+jogo.toString());
 			}
 		}
 	}
@@ -151,7 +151,7 @@ public class ACMEGames {
 		   if (cate != null) {
 			for (JogoEletronico jogo : jogoseletronicos) {
 				if (jogo.getCategoria().equals(cate)) {
-					System.out.println(jogo.toString());
+					System.out.println("5:"+jogo.toString());
 				}
 			}
 		}
@@ -166,7 +166,7 @@ public class ACMEGames {
 
 		if (somatorio == 0) {System.out.println("Erro: Nenhum jogo encontrado");}
 
-		else { System.out.println("O valor do somatorio foi :" + somatorio);}
+		else { System.out.println("6:" + somatorio);}
 	}
 
 
@@ -188,7 +188,7 @@ public class ACMEGames {
 		if (maior.calculaPrecoFinal() == 0) {
 			System.out.println("ERRO: Nenhum jogo encontrado");
 		}
-		else {System.out.println("O maior jogo de tabuleiro é :" + maior.toString());}
+		else {System.out.println("7:" + maior.toString());}
 	}
 
 	public void mostrarMedia(){
@@ -215,7 +215,7 @@ public class ACMEGames {
 		}
 
 		else {
-		System.out.println("media dos preços base: "+ media + " ; " + jogoproximo.toString());
+		System.out.println("8:"+ media + " ; " + jogoproximo.toString());
 		}
 
 	}
@@ -233,7 +233,7 @@ public class ACMEGames {
 			 if (antigo == null ){
 				 System.out.println("Nenhum jogo encontrado");
 			 }
-			 else System.out.println(antigo.toString());
+			 else System.out.println("9:"+antigo.toString());
 		 }
 
 
