@@ -39,16 +39,17 @@ public class ACMEGames {
 	}
 
 		public void cadastraEletronico () {
+		int ano = 0 ;
+		double precobase= 0.0;
 		String linha = entrada.nextLine();
 		while (!linha.equals("-1")) {
 			String[] info = linha.split(";");
 			if (info.length >= 4) {
-				String nome = info[0];
-				int ano = info[1];
-				double precobase = entrada.nex;
-				String plataforma = entrada.nextLine();
-				String categoria = entrada.nextLine();
-
+				 String nome = info[0];
+				 ano = Integer.parseInt(info[1]);
+				 precobase = Double.parseDouble(info[2]);
+				String plataforma = info [3];
+				String categoria = info[4];
 
 				Jogo existe = ludoteca.consultaPorNome(nome);
 				if (existe == null) {
@@ -59,8 +60,9 @@ public class ACMEGames {
 				} else {
 					System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
 
-		linha = entrada.nextLine();		}
+				}
 			}
+			linha = entrada.nextLine();
 		}
 
 		}

@@ -1,1 +1,4 @@
-vamos verCivilization V;2014;188.98;PS4;Estrategia
+Civilization V,207.878
+God of War Ragnarok,236.654
+The Sims 4,60.533
+Super Mario Odissey,318.87899999999996
