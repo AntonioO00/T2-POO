@@ -1,0 +1,15 @@
+1: Civilization V,207.878
+1: God of War Ragnarok,236.654
+1: The Sims 4,60.533
+1: Super Mario Odissey,318.87899999999996
+2:Jogo da Vida,206.27800000000002
+2:Xadrez,20724.7392
+3:Jogo da Vida, 1970, 121.34, 70
+4:Civilization V, 2014, 188.98, PS4, STR
+4:The Sims 4, 2014, 55.03, PC, SIM
+5:God of War Ragnarok, 2022, 215.14, PS5, ACT
+5:Super Mario Odissey, 2017, 289.89, Switch, ACT
+6:21754.9612
+7:Xadrez, 204, 15700.56, 32
+8:2761.8233333333333 ; Xadrez, 204, 15700.56, 32
+9:Xadrez, 204, 15700.56, 32
