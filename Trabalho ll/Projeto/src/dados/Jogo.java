@@ -33,15 +33,5 @@ public abstract class Jogo {
 
 	public abstract double calculaPrecoFinal();
 
-	public double doubleJogo(double valor){
-		DecimalFormat decimal = new DecimalFormat("0.00");
-		return Double.parseDouble(decimal.format(valor));
-	}
-	@Override
-	public String toString() {
-		return nome + ", " + ano + ", " +"R$ "+doubleJogo(precobase);
-	}
-
-
 
 }

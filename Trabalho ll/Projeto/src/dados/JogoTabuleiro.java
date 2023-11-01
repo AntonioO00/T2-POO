@@ -9,11 +9,6 @@ public class JogoTabuleiro extends Jogo {
 		this.numeropecas = numeropecas;
 	}
 
-	@Override
-	public String toString() {
-		return super.toString() + ", " +numeropecas;
-	}
-
 	public int getNumeropecas() {
 		return numeropecas;
 	}

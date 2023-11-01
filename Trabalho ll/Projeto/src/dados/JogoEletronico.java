@@ -18,6 +18,7 @@ public class JogoEletronico extends Jogo {
 	public Categoria getCategoria() {
 		return categoria;
 	}
+	public String getPlataforma() {return plataforma;}
 
 	@Override
 	public double calculaPrecoFinal() {

@@ -4,17 +4,16 @@ import java.util.ArrayList;
 
 public class Ludoteca implements Iterador {
 
+	ArrayList<Jogo> jogos = new ArrayList<Jogo>();
 	private JogoEletronico jogoEletronico;
 	private JogoTabuleiro jogoTabuleiro;
-
-	ArrayList<Jogo> jogos = new ArrayList<Jogo>();
-
 	private int contador;
 
 
 	    public ArrayList<Jogo> getJogos () {
 		return jogos;
 	}
+
 
 		public boolean addJogo (Jogo jogo){
 			jogos.add(jogo);
@@ -24,6 +23,7 @@ public class Ludoteca implements Iterador {
 			return true;
 		}
 
+
 		public Jogo consultaPorNome(String nome) {
 		for (Jogo jogo : jogos) {
 			if (nome.equals(jogo.getNome())) {
@@ -32,7 +32,6 @@ public class Ludoteca implements Iterador {
 		}
 		return null;
 	}
-
 
 
 		public ArrayList<Jogo> consultaPorAno ( int ano){
@@ -46,8 +45,8 @@ public class Ludoteca implements Iterador {
 				return null;
 			}
 			return jogodata;
-
 		}
+
 
 		public Categoria value(String categoria){
 			Categoria value = null;
@@ -64,13 +63,33 @@ public class Ludoteca implements Iterador {
 				return value;
 			}
 			else {return value;}
-
 		}
+
 
 		public double Double(double valor){
 			DecimalFormat decimal = new DecimalFormat("0.00");
 			return Double.parseDouble(decimal.format(valor));
 		}
+	public String toString(Jogo jogo){
+		if (jogo instanceof JogoEletronico){
+			JogoEletronico jogoe = (JogoEletronico) jogo;
+			return  jogoe.getNome() + ","
+					+ jogoe.getAno() + ","
+					+ "R$ "+ jogoe.getPrecoBase() + ","
+					+jogoe.getPlataforma() + ","
+					+jogoe.getCategoria().getNome()+ ","
+					+ "R$ " + Double(jogoe.calculaPrecoFinal());
+		}
+		else {
+			JogoTabuleiro jogot = (JogoTabuleiro) jogo;
+			return jogo.getNome() + ","
+					+ jogot.getAno() + ","
+					+ "R$ "+jogot.getPrecoBase() + ","
+					+ jogot.getNumeropecas() + ","
+			        + "R$ " + Double(jogot.calculaPrecoFinal());
+
+		}
+	}
 
 
 		/**
@@ -101,4 +120,8 @@ public class Ludoteca implements Iterador {
 			return next;
 
 	}
+
+
+
+
 }
