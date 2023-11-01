@@ -12,7 +12,7 @@ import java.io.FileReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.util.Locale;
-import java.util.Scanner;
+
 
 
 public class ACMEGames {
@@ -65,7 +65,7 @@ public class ACMEGames {
 					Categoria cat = ludoteca.value(categoria);
 					Jogo jogo = new JogoEletronico(nome, ano, precobase, plataforma, cat);
 					ludoteca.addJogo(jogo);
-					System.out.println("1: "+jogo.getNome() + "," + jogo.calculaPrecoFinal());
+					System.out.println("1: "+jogo.getNome() + "," +"R$ "+ ludoteca.Double(jogo.calculaPrecoFinal()));
 				} else {
 					System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
 
@@ -96,7 +96,7 @@ public class ACMEGames {
 					if (existe == null) {
 						JogoTabuleiro jt = new JogoTabuleiro(nome, ano, precobase, numeropecas);
 						ludoteca.addJogo(jt);
-						System.out.println("2:"+jt.getNome() + "," + jt.calculaPrecoFinal());
+						System.out.println("2:"+jt.getNome() + "," +"R$ "+ ludoteca.Double(jt.calculaPrecoFinal()));
 					} else {
 						System.out.println(":Erro-jogo com nome repetido: " + existe.getNome());
 					}
@@ -115,7 +115,7 @@ public class ACMEGames {
 				ArrayList<Jogo> jogos = ludoteca.getJogos();
 				for (Jogo jogo : jogos) {
 					if (jogo.getNome().equals(nome)) {
-						System.out.println("3:"+jogo.toString());
+						System.out.println("3:"+ludoteca.toString(jogo));
 					}
 				}
 			}
@@ -131,7 +131,7 @@ public class ACMEGames {
 		}
 		else {
 			for (Jogo jogo: data) {
-				System.out.println("4:"+jogo.toString());
+				System.out.println("4:"+ludoteca.toString(jogo));
 			}
 		}
 	}
@@ -149,9 +149,9 @@ public class ACMEGames {
 
 		   Categoria cate = ludoteca.value(categoria);
 		   if (cate != null) {
-			for (JogoEletronico jogo : jogoseletronicos) {
-				if (jogo.getCategoria().equals(cate)) {
-					System.out.println("5:"+jogo.toString());
+			for (JogoEletronico jogoe : jogoseletronicos) {
+				if (jogoe.getCategoria().equals(cate)) {
+					System.out.println("5:"+ ludoteca.toString(jogoe));
 				}
 			}
 		}
@@ -166,7 +166,7 @@ public class ACMEGames {
 
 		if (somatorio == 0) {System.out.println("Erro: Nenhum jogo encontrado");}
 
-		else { System.out.println("6:" + somatorio);}
+		else { System.out.println("6:" +"R$ "+ ludoteca.Double(somatorio));}
 	}
 
 
@@ -188,7 +188,7 @@ public class ACMEGames {
 		if (maior.calculaPrecoFinal() == 0) {
 			System.out.println("ERRO: Nenhum jogo encontrado");
 		}
-		else {System.out.println("7:" + maior.toString());}
+		else {System.out.println("7:" + maior.getNome() + "," + "R$ "+ludoteca.Double(maior.calculaPrecoFinal()));}
 	}
 
 	public void mostrarMedia(){
@@ -206,16 +206,18 @@ public class ACMEGames {
 			double diferenca = Math.abs(jogo.getPrecoBase() - soma);
 			if (diferenca < minimo) {
 				minimo = diferenca;
+				if (jogo.getAno() > 0){
 				jogoproximo = jogo;
+			    }
 			}
 		}
 
 		if (jogoproximo == null){
-			System.out.println("Nenhum jogo encintrado");
+			System.out.println("Nenhum jogo encontrado");
 		}
 
 		else {
-		System.out.println("8:"+ media + " ; " + jogoproximo.toString());
+		System.out.println("8:" + "R$ " + ludoteca.Double(media) + "," + ludoteca.toString(jogoproximo));
 		}
 
 	}
@@ -233,7 +235,7 @@ public class ACMEGames {
 			 if (antigo == null ){
 				 System.out.println("Nenhum jogo encontrado");
 			 }
-			 else System.out.println("9:"+antigo.toString());
+			 else System.out.println("9:"+antigo.getNome() +","+ antigo.getAno());
 		 }
 
 

@@ -1,5 +1,7 @@
 package dados;
 
+import java.text.DecimalFormat;
+
 public abstract class Jogo {
 
 	private String nome;
@@ -29,22 +31,7 @@ public abstract class Jogo {
 		return precobase;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public void setAno(int ano) {
-		this.ano = ano;
-	}
-
-	public void setPrecobase(double precobase) {
-		this.precobase = precobase;
-	}
-
 	public abstract double calculaPrecoFinal();
 
-	@Override
-	public String toString() {
-		return nome + ", " + ano + ", "+precobase;
-	}
+
 }

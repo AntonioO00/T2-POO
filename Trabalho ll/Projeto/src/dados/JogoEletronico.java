@@ -15,35 +15,31 @@ public class JogoEletronico extends Jogo {
 		this.categoria = categoria;
 	}
 
-
-	public String getPlataforma() {
-		return plataforma;
-	}
-
-	public void setPlataforma(String plataforma) {
-		this.plataforma = plataforma;
-	}
-
 	public Categoria getCategoria() {
 		return categoria;
 	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
+	public String getPlataforma() {return plataforma;}
 
 	@Override
 	public double calculaPrecoFinal() {
 		double precof = 0;
-		precof = getPrecoBase() + (getPrecoBase() * 0.1);
-		return precof;
-
+		if (categoria.equals(Categoria.STR)) {
+			precof = getPrecoBase() + (getPrecoBase() * 0.7);
+			return precof;
+		}
+		if (categoria.equals(Categoria.SIM)) {
+			precof = getPrecoBase() + (getPrecoBase() * 0.3);
+			return precof;
+		}
+		else {
+			precof = getPrecoBase() + (getPrecoBase() * 0.1);
+			return precof;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + ", " + plataforma + ", " + categoria;
+		return super.toString() + ", " + plataforma + ", " + categoria.getNome()+ "," + "R$ " +calculaPrecoFinal();
 	}
 
 
