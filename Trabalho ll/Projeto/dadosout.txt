@@ -1,7 +1,7 @@
-1: Civilization V,R$ 321.27
-1: God of War Ragnarok,R$ 236.65
-1: The Sims 4,R$ 71.54
-1: Super Mario Odissey,R$ 318.88
+1:Civilization V,R$ 321.27
+1:God of War Ragnarok,R$ 236.65
+1:The Sims 4,R$ 71.54
+1:Super Mario Odissey,R$ 318.88
 2:Jogo da Vida,R$ 206.28
 2:Xadrez,R$ 20724.74
 3:Jogo da Vida,1970,R$ 121.34,70,R$ 206.28

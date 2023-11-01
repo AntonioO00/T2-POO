@@ -65,9 +65,9 @@ public class ACMEGames {
 					Categoria cat = ludoteca.value(categoria);
 					Jogo jogo = new JogoEletronico(nome, ano, precobase, plataforma, cat);
 					ludoteca.addJogo(jogo);
-					System.out.println("1: "+jogo.getNome() + "," +"R$ "+ ludoteca.Double(jogo.calculaPrecoFinal()));
+					System.out.println("1:"+jogo.getNome() + "," +"R$ "+ ludoteca.Double(jogo.calculaPrecoFinal()));
 				} else {
-					System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
+					System.out.println("1: Erro-jogo com nome repitido :" + existe.getNome());
 
 				}
 			}
@@ -98,7 +98,7 @@ public class ACMEGames {
 						ludoteca.addJogo(jt);
 						System.out.println("2:"+jt.getNome() + "," +"R$ "+ ludoteca.Double(jt.calculaPrecoFinal()));
 					} else {
-						System.out.println(":Erro-jogo com nome repetido: " + existe.getNome());
+						System.out.println("2:Erro-jogo com nome repetido: " + existe.getNome());
 					}
 				}
 
@@ -110,7 +110,7 @@ public class ACMEGames {
 		public void mostraDeterminado () {
 			String nome = entrada.nextLine();
 			if (ludoteca.consultaPorNome(nome) == null) {
-				System.out.println("ERRO - Jogo nao existe");
+				System.out.println("3: Nome inexistente.");
 			} else {
 				ArrayList<Jogo> jogos = ludoteca.getJogos();
 				for (Jogo jogo : jogos) {
@@ -127,7 +127,7 @@ public class ACMEGames {
 		int ano = Integer.parseInt(converte);
 		ArrayList<Jogo>data = ludoteca.consultaPorAno(ano);
 		if (data == null){
-		System.out.println("Nenhum jogo encontrado");
+		System.out.println("4: Nenhum jogo encontrado.");
 		}
 		else {
 			for (Jogo jogo: data) {
@@ -148,14 +148,20 @@ public class ACMEGames {
 				.toList();
 
 		   Categoria cate = ludoteca.value(categoria);
+
 		   if (cate != null) {
-			for (JogoEletronico jogoe : jogoseletronicos) {
-				if (jogoe.getCategoria().equals(cate)) {
-					System.out.println("5:"+ ludoteca.toString(jogoe));
-				}
-			}
+			   if (jogoseletronicos.isEmpty()){
+				   System.out.println("5: Nenhum jogo encontrado.");
+			   }
+			   else {
+				   for (JogoEletronico jogoe : jogoseletronicos) {
+					   if (jogoe.getCategoria().equals(cate)) {
+						   System.out.println("5:" + ludoteca.toString(jogoe));
+					   }
+				   }
+			   }
 		}
-		else { System.out.println("Nao existe jogo dessa categoria");}
+		else { System.out.println("5: Categoria Inexistente.");}
 	}
 
 
@@ -164,7 +170,7 @@ public class ACMEGames {
 	     	for (Jogo jogo : ludoteca.getJogos()) {
 			somatorio += jogo.calculaPrecoFinal();}
 
-		if (somatorio == 0) {System.out.println("Erro: Nenhum jogo encontrado");}
+		if (somatorio == 0) {System.out.println("6: Nenhum jogo encontrado.");}
 
 		else { System.out.println("6:" +"R$ "+ ludoteca.Double(somatorio));}
 	}
@@ -186,7 +192,7 @@ public class ACMEGames {
 				maior = jogo;}}
 
 		if (maior.calculaPrecoFinal() == 0) {
-			System.out.println("ERRO: Nenhum jogo encontrado");
+			System.out.println("7: Nenhum jogo encontrado.");
 		}
 		else {System.out.println("7:" + maior.getNome() + "," + "R$ "+ludoteca.Double(maior.calculaPrecoFinal()));}
 	}
@@ -203,17 +209,15 @@ public class ACMEGames {
 		double media = soma / ludoteca.getJogos().size();
 
 		for (Jogo jogo : ludoteca.getJogos()) {
-			double diferenca = Math.abs(jogo.getPrecoBase() - soma);
+			double diferenca = Math.abs(jogo.getPrecoBase() - media);
 			if (diferenca < minimo) {
 				minimo = diferenca;
-				if (jogo.getAno() > 0){
 				jogoproximo = jogo;
-			    }
 			}
 		}
 
 		if (jogoproximo == null){
-			System.out.println("Nenhum jogo encontrado");
+			System.out.println("8: Nenhum jogo encontrado.");
 		}
 
 		else {
@@ -233,7 +237,7 @@ public class ACMEGames {
 			 }
 
 			 if (antigo == null ){
-				 System.out.println("Nenhum jogo encontrado");
+				 System.out.println("9: Nenhum jogo encontrado.");
 			 }
 			 else System.out.println("9:"+antigo.getNome() +","+ antigo.getAno());
 		 }
