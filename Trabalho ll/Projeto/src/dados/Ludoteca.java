@@ -1,4 +1,5 @@
 package dados;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Ludoteca implements Iterador {
@@ -9,8 +10,6 @@ public class Ludoteca implements Iterador {
 	ArrayList<Jogo> jogos = new ArrayList<Jogo>();
 
 	private int contador;
-
-
 
 
 	    public ArrayList<Jogo> getJogos () {
@@ -68,15 +67,10 @@ public class Ludoteca implements Iterador {
 
 		}
 
-
-
-
-
-
-
-
-
-
+		public double Double(double valor){
+			DecimalFormat decimal = new DecimalFormat("0.00");
+			return Double.parseDouble(decimal.format(valor));
+		}
 
 
 		/**

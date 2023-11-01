@@ -12,7 +12,7 @@ import java.io.FileReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.util.Locale;
-import java.util.Scanner;
+
 
 
 public class ACMEGames {
@@ -65,7 +65,7 @@ public class ACMEGames {
 					Categoria cat = ludoteca.value(categoria);
 					Jogo jogo = new JogoEletronico(nome, ano, precobase, plataforma, cat);
 					ludoteca.addJogo(jogo);
-					System.out.println("1: "+jogo.getNome() + "," + jogo.calculaPrecoFinal());
+					System.out.println("1: "+jogo.getNome() + "," +"R$ "+ ludoteca.Double(jogo.calculaPrecoFinal()));
 				} else {
 					System.out.println("ERRO-jogo com nome repitido :" + existe.getNome());
 
@@ -96,7 +96,7 @@ public class ACMEGames {
 					if (existe == null) {
 						JogoTabuleiro jt = new JogoTabuleiro(nome, ano, precobase, numeropecas);
 						ludoteca.addJogo(jt);
-						System.out.println("2:"+jt.getNome() + "," + jt.calculaPrecoFinal());
+						System.out.println("2:"+jt.getNome() + "," +"R$ "+ ludoteca.Double(jt.calculaPrecoFinal()));
 					} else {
 						System.out.println(":Erro-jogo com nome repetido: " + existe.getNome());
 					}
@@ -166,7 +166,7 @@ public class ACMEGames {
 
 		if (somatorio == 0) {System.out.println("Erro: Nenhum jogo encontrado");}
 
-		else { System.out.println("6:" + somatorio);}
+		else { System.out.println("6:" +"R$ "+ ludoteca.Double(somatorio));}
 	}
 
 
@@ -188,7 +188,7 @@ public class ACMEGames {
 		if (maior.calculaPrecoFinal() == 0) {
 			System.out.println("ERRO: Nenhum jogo encontrado");
 		}
-		else {System.out.println("7:" + maior.toString());}
+		else {System.out.println("7:" + maior + "," + "R$ "+ ludoteca.Double(maior.calculaPrecoFinal()));}
 	}
 
 	public void mostrarMedia(){
@@ -211,11 +211,11 @@ public class ACMEGames {
 		}
 
 		if (jogoproximo == null){
-			System.out.println("Nenhum jogo encintrado");
+			System.out.println("Nenhum jogo encontrado");
 		}
 
 		else {
-		System.out.println("8:"+ media + " ; " + jogoproximo.toString());
+		System.out.println("8:"+ ludoteca.Double(media) + " ; " + jogoproximo.toString());
 		}
 
 	}
@@ -233,7 +233,7 @@ public class ACMEGames {
 			 if (antigo == null ){
 				 System.out.println("Nenhum jogo encontrado");
 			 }
-			 else System.out.println("9:"+antigo.toString());
+			 else System.out.println("9:"+antigo.getNome() +","+ antigo.getAno());
 		 }
 
 

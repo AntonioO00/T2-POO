@@ -7,7 +7,6 @@ public class JogoTabuleiro extends Jogo {
 	public JogoTabuleiro(String nome, int ano, double precobase, int numeropecas) {
 		super(nome, ano, precobase);
 		this.numeropecas = numeropecas;
-
 	}
 
 	@Override
@@ -17,10 +16,6 @@ public class JogoTabuleiro extends Jogo {
 
 	public int getNumeropecas() {
 		return numeropecas;
-	}
-
-	public void setNumeropecas(int numeropecas) {
-		this.numeropecas = numeropecas;
 	}
 
 	@Override
